@@ -1,23 +1,6 @@
-## React Boilerplate using Webpack 4 and Babel 7
+## Quote.
 
-This is the starter code for my React Web Applications  
-
-### Setup and Get Started
-
-Clone this repository - `git clone https://github.com/AdithyaBhat17/my-react-starter.git`  
-Install Packages - `npm install`   
-Start dev server - `npm start`  
-Build static files - `npm run build`  
-
-### NPM Packages used
-
-* [React](https://reactjs.org)
-* [ReactDOM](https://reactjs.org/docs/react-dom.html)
-* [Webpack, webpack-cli, webpack-dev-server](https://webpack.js.org/)
-* [@babel/core, @babel/preset-env, @babel/preset-react, babel-loader](https://babeljs.io/)
-* [css-loader](https://www.npmjs.com/package/css-loader)
-* [style-loader](https://www.npmjs.com/package/style-loader)
-* [html-loader](https://www.npmjs.com/package/html-loader)
+A ReactJS Web Application which renders design quotes using QuotedesignAPI.  
 
 
 #### MIT License
