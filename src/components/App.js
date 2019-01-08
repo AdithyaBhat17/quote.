@@ -14,7 +14,6 @@ class App extends React.Component{
         fetch('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1')
         .then(response => response.json())
         .then(quote => {
-            // let quotes = this.state.quotes.concat(quote)
             this.setState({quotes: quote})
         })
     }
