@@ -1,9 +1,68 @@
+html{
+    height: 100%;
+}
+
 body{
-    background-color: #505D58;
+    background-color: #050506;
     color: #fff;
     height: 100%;
+    font-family: 'Unica One';
+    background-image: url('../assets/space_art.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+header{
+    flex:1;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    font-family: "Abril Fatface";
+}
+
+button{
+    background-color: #e6e6e6;
+    color: #050506;
+    border-radius: 5px;
+    box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.07);
+    border-bottom-left-radius: 25px;
+    border: none;
+    height: 100%;
+    padding: 10px;
+    margin-top: 30px !important;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Unica One"
 }
 
 div{
     text-align: center;
+}
+
+p{
+    display: table;
+    margin: 50px auto;
+    font-weight: bold;
+    font-size: 2em;
+    max-width: 90%;
+}
+
+@media only screen and (max-width:768px){
+    body{
+        /* min-height: 100vw; */
+        background-size: cover;
+        background-image: url('../assets/space_art.jpg'),linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3));
+        overflow-x: hidden;
+    }
+    button{
+        margin-top: 25px !important;
+    }
+    p{
+        font-size: 1.2em;
+        line-height: 35px;
+        margin: 15px auto;
+    }
 }
