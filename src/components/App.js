@@ -6,27 +6,46 @@ class App extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            quotes: []
+            quotes: [],
+            click: 0
         }
+        this.fetchQuote = this.fetchQuote.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    _fetchQuote() {
-        fetch('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1')
+    fetchQuote() {
+        fetch('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1', {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+        })
         .then(response => response.json())
         .then(quote => {
             this.setState({quotes: quote})
         })
     }
 
-    componentWillMount(){
-        this._fetchQuote()
+    componentDidMount(){
+        this.fetchQuote()
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.click !== this.state.click){
+            this.fetchQuote()
+        }
+    }
+
+    handleClick(){
+        this.setState((prev) => ({
+            click: prev.click+1
+        }))
     }
 
     render(){
         const { quotes } = this.state
         return(
             <div>
-                <Navbar click={() => this._fetchQuote()}/>
+                <Navbar click={this.handleClick.bind(this)}/>
                 {quotes && quotes.map(quote => (
                     <Quote 
                      key={quote.ID}
