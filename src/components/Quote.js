@@ -5,18 +5,15 @@ import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faShareAlt)
 
-const Quote = ({quote, author, text}) => {
-    // console.log(document.getElementById('quote').textContent)
+const Quote = ({ author, text }) => {
     return(
         <div>
-            {<p
-             id="quote"
-             dangerouslySetInnerHTML={{__html: quote}}>
-            </p>}
+            <p id="quote"></p>
             <p>
                 <strong>{author}</strong>
             </p>
-            <a href={`whatsapp://send?text=${text}\n\n%2D%20%2A${author}`}>
+            <a href={`whatsapp://send?text=${text}\n\n%2D%20%2A${author}%2A`} 
+            onClick={console.log(text)}>
                 <FontAwesomeIcon icon='share-alt' color='#fff'/>
                 &nbsp;whatsapp 
             </a>

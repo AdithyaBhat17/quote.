@@ -12,10 +12,12 @@ class App extends React.Component{
         this.state = {
             quotes: [],
             click: 0,
-            loading: true
+            loading: true,
+            textToShow: ''
         }
         this.fetchQuote = this.fetchQuote.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.text = this.text.bind(this)
     }
 
     fetchQuote() {
@@ -28,12 +30,14 @@ class App extends React.Component{
         .then(quote => {
             quote[0].content.length > 300
              ? this.setState(prev => ({click: prev.click + 1}))
-             : this.setState({quotes: quote,loading: false})
+             : this.setState({quotes: quote,loading: false, textToShow: quote[0].content})
+             this.text()
         })
     }
 
     componentDidMount(){
         this.fetchQuote()
+        
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -49,7 +53,11 @@ class App extends React.Component{
     }
 
     text(){
-        return document.getElementById('quote').textContent
+        let textToShow = document.getElementById('quote')
+        textToShow.innerHTML = this.state.textToShow
+        let textToRender = textToShow.textContent
+        this.setState({textToShow: textToRender})
+        console.log(this.state.textToShow)
     }
 
     render(){
@@ -57,7 +65,6 @@ class App extends React.Component{
         if(loading)
             return <div> loading </div>
         const body = document.getElementById('body')
-        // console.log(document.getElementById('quote').textContent)
         if(window.innerWidth <= 768){
             click % 2 === 0
             ? body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url(${Moon}) `
@@ -72,9 +79,8 @@ class App extends React.Component{
                 {quotes && quotes.map(quote => (
                     <Quote 
                      key={quote.ID}
-                     quote={quote.content}
+                     text={this.state.textToShow}
                      author={quote.title}  
-                     text={this.text.bind(this)} 
                     />
                 ))}
             </div>
