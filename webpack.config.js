@@ -33,6 +33,12 @@ module.exports = {
                 //     minimize: true
                 // }
             }]
+        },
+        {
+            test: /\.(png|jpg|jpeg)/,
+            use: [{
+                loader: "file-loader"
+            }]
         }
         ]
     },
